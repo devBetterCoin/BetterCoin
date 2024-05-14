@@ -1,5 +1,5 @@
 import hre from "hardhat";
-import bttModule from "../ignition/modules/BetterToken";
+import bttModule from "../ignition/modules/BetterCoin";
 import bttMarketModule from "../ignition/modules/BTTMarket";
 import bttBurnVaultModule from "../ignition/modules/BTTBurnVault";
 import erc20Module from "../ignition/modules/token";

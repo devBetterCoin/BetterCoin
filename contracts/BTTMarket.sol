@@ -4,17 +4,17 @@ pragma solidity 0.8.20;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/access/Ownable2Step.sol";
-import "./BetterToken.sol";
+import "./BetterCoin.sol";
 
 /// @title BTTMarket
 /// @notice A centralized market for buying and selling BTT tokens at administratively defined rates.
 /// @dev This contract allows users to buy or sell BTT tokens using a defined market token, with adjustable rates and fees.
 contract BTTMarket is Ownable2Step {
     using SafeERC20 for IERC20;
-    using SafeERC20 for BetterToken;
+    using SafeERC20 for BetterCoin;
 
-    /// @notice The BetterToken (BTT) contract address
-    BetterToken private immutable btt;
+    /// @notice The BetterCoin (BTT) contract address
+    BetterCoin private immutable btt;
     /// @notice The market token used for buying and selling BTT
     IERC20 private immutable marketToken;
 
@@ -53,7 +53,7 @@ contract BTTMarket is Ownable2Step {
         require(_marketTokenPer100Btt > 0, "Rate must be greater than 0");
         require(_fee < 1000, "Fee must be lesser than 1000");
 
-        btt = BetterToken(_addrBtt);
+        btt = BetterCoin(_addrBtt);
         marketToken = IERC20(_addrMarketToken);
 
         marketTokenPer100Btt = _marketTokenPer100Btt;
