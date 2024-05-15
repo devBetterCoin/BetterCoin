@@ -3,12 +3,12 @@ pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-/// @title BetterToken (BTT)
-/// @notice BetterToken (BTT) is a burnable ERC20 token with a limited supply, designed to work on the Arbitrum network.
+/// @title BetterCoin (BTT)
+/// @notice BetterCoin (BTT) is a burnable ERC20 token with a limited supply, designed to work on the Arbitrum network.
 /// @dev This contract manages the minting and burning of BTT tokens. The total supply is capped at 21,000,000 tokens.
-contract BetterToken is ERC20 {
+contract BetterCoin is ERC20 {
     /// @notice The name of the token to be created upon deployment
-    string private constant nameForDeploy = "BetterToken";
+    string private constant nameForDeploy = "BetterCoin";
     /// @notice The symbol of the token to be created upon deployment
     string private constant symbolForDeploy = "BTT";
     /// @notice The maximum number of BTT tokens that can ever exist

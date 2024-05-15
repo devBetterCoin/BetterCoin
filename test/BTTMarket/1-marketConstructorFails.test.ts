@@ -1,13 +1,13 @@
 import { ethers } from "hardhat";
 import chai from "chai";
-import { BetterToken, Token } from "../../typechain-types";
+import { BetterCoin, Token } from "../../typechain-types";
 import hre from "hardhat";
 import erc20Module from "../../ignition/modules/token";
-import bttModule from "../../ignition/modules/BetterToken";
+import bttModule from "../../ignition/modules/BetterCoin";
 const { expect } = chai;
 
 describe("Market constructor fail requires", function () {
-  let btt: BetterToken;
+  let btt: BetterCoin;
   let wbtc: Token;
   let usdt: Token;
   const zeroAddress = "0x0000000000000000000000000000000000000000";
@@ -24,7 +24,7 @@ describe("Market constructor fail requires", function () {
         },
       })
     ).erc20 as unknown as Token;
-    btt = (await hre.ignition.deploy(bttModule)).btt as unknown as BetterToken;
+    btt = (await hre.ignition.deploy(bttModule)).btt as unknown as BetterCoin;
 
     usdt = (
       await hre.ignition.deploy(erc20Module, {

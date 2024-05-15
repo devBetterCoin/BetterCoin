@@ -1,14 +1,14 @@
 import { ethers } from "hardhat";
 import chai from "chai";
-import bttModule from "../../ignition/modules/BetterToken";
+import bttModule from "../../ignition/modules/BetterCoin";
 import bttBurnVaultModule from "../../ignition/modules/BTTBurnVault";
-import { BTTBurnVault, BetterToken, Token } from "../../typechain-types";
+import { BTTBurnVault, BetterCoin, Token } from "../../typechain-types";
 import hre from "hardhat";
 import erc20Module from "../../ignition/modules/token";
 const { expect } = chai;
 
 describe("burnVault", function () {
-  let btt: BetterToken;
+  let btt: BetterCoin;
   let wbtc: Token;
   let burnVault: BTTBurnVault;
   const bttTotalSupply = BigInt(21000000) * BigInt(10) ** BigInt(18);
@@ -29,7 +29,7 @@ describe("burnVault", function () {
       })
     ).erc20 as unknown as Token;
 
-    btt = (await hre.ignition.deploy(bttModule)).btt as unknown as BetterToken;
+    btt = (await hre.ignition.deploy(bttModule)).btt as unknown as BetterCoin;
 
     const addrBtt = (await btt.getAddress()).toLocaleLowerCase();
     const addrWbtc = (await wbtc.getAddress()).toLocaleLowerCase();

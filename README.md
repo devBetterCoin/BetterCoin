@@ -1,8 +1,8 @@
-# Better Token (BTT)
+# Better Coin (BTT)
 
 ## Introduction
 
-Better Token (BTT) is an ERC20 token designed to work on the Arbitrum network. With a fixed supply limit of 21,000,000 tokens, BTT is burnable and interacts with various smart contracts to provide a decentralized finance (DeFi) ecosystem centered around token burns and exchanges.
+Better Coin (BTT) is an ERC20 token designed to work on the Arbitrum network. With a fixed supply limit of 21,000,000 tokens, BTT is burnable and interacts with various smart contracts to provide a decentralized finance (DeFi) ecosystem centered around token burns and exchanges.
 
 The primary objective of the BTT token and its ecosystem of smart contracts is to create a share system where holders can increase their value by receiving a proportional share of the system's earnings. This is achieved through the BTTBurnVault, where holders can burn their tokens at any time to receive their share of the wBTC reserves, based on their holdings. The system's shares will be distributed through periodic direct transfers of wBTC to the BTTburnVault
 
@@ -19,10 +19,10 @@ As the system evolves and holders burn their tokens, the next earnings are distr
 
 To read the entire API definition refer to [API DOCUMENTATION](API.md)
 
-### BetterToken Contract
+### BetterCoin Contract
 
 **Overview**:  
-BetterToken (BTT) is a burnable ERC20 token with a limited supply, designed to work on the Arbitrum network. This contract manages the minting and burning of BTT tokens, with a capped total supply of 21,000,000 tokens.
+BetterCoin (BTT) is a burnable ERC20 token with a limited supply, designed to work on the Arbitrum network. This contract manages the minting and burning of BTT tokens, with a capped total supply of 21,000,000 tokens.
 
 ### 1.1 BTTBurnVault Contract
 
@@ -69,7 +69,7 @@ Operates as a centralized exchange for BTT, where users can buy or sell BTT toke
 
 ### 3.1 Contract Information
 
-#### 3.1.1 BetterToken.sol
+#### 3.1.1 BetterCoin.sol
 
 - **Assets**:
   - `MAX_SUPPLY`: The maximum supply of BTT tokens.

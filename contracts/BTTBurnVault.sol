@@ -3,19 +3,19 @@ pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "./BetterToken.sol";
+import "./BetterCoin.sol";
 
 /// @title BTTBurnVault
 /// @notice A vault that allows users to burn BTT tokens in exchange for backing wBTC tokens.
 /// @dev This contract facilitates the burning of BTT tokens and ensures fair distribution of wBTC tokens.
 contract BTTBurnVault {
     using SafeERC20 for IERC20;
-    using SafeERC20 for BetterToken;
+    using SafeERC20 for BetterCoin;
 
     /// @notice The wBTC token contract address
     IERC20 immutable wbtc;
-    /// @notice The BetterToken (BTT) contract address
-    BetterToken immutable btt;
+    /// @notice The BetterCoin (BTT) contract address
+    BetterCoin immutable btt;
     /// @notice The publicly accessible address of the wBTC token contract
     address public wbtcAddress;
 
@@ -31,7 +31,7 @@ contract BTTBurnVault {
         require(_addrBtt != address(0), "Cannot set BTT to zero address");
         require(_addrWbtc != address(0), "Cannot set wBTC to zero address");
 
-        btt = BetterToken(_addrBtt);
+        btt = BetterCoin(_addrBtt);
         wbtc = IERC20(_addrWbtc);
         wbtcAddress = _addrWbtc;
     }

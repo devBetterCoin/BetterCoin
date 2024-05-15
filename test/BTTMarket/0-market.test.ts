@@ -1,14 +1,14 @@
 import { ethers } from "hardhat";
 import chai from "chai";
-import { BTTMarket, BetterToken, Token } from "../../typechain-types";
+import { BTTMarket, BetterCoin, Token } from "../../typechain-types";
 import hre from "hardhat";
 import erc20Module from "../../ignition/modules/token";
-import bttModule from "../../ignition/modules/BetterToken";
+import bttModule from "../../ignition/modules/BetterCoin";
 import bttMarketModule from "../../ignition/modules/BTTMarket";
 const { expect } = chai;
 
 describe("Market", function () {
-  let btt: BetterToken;
+  let btt: BetterCoin;
   let wbtc: Token;
   let usdt: Token;
   let market: BTTMarket;
@@ -38,7 +38,7 @@ describe("Market", function () {
       })
     ).erc20 as unknown as Token;
 
-    btt = (await hre.ignition.deploy(bttModule)).btt as unknown as BetterToken;
+    btt = (await hre.ignition.deploy(bttModule)).btt as unknown as BetterCoin;
 
     const addrBtt = (await btt.getAddress()).toLocaleLowerCase();
     const addrWbtc = (await wbtc.getAddress()).toLocaleLowerCase();
