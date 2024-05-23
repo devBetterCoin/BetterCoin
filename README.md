@@ -1,78 +1,78 @@
-# Better Coin (BTT)
+# EverValueCoin (EVA)
 
 ## Introduction
 
-Better Coin (BTT) is an ERC20 token designed to work on the Arbitrum network. With a fixed supply limit of 21,000,000 tokens, BTT is burnable and interacts with various smart contracts to provide a decentralized finance (DeFi) ecosystem centered around token burns and exchanges.
+Ever Value Coin (EVA) is an ERC20 token designed to work on the Arbitrum network. With a fixed supply limit of 21,000,000 tokens, EVA is burnable and interacts with various smart contracts to provide a decentralized finance (DeFi) ecosystem centered around token burns and exchanges.
 
-The primary objective of the BTT token and its ecosystem of smart contracts is to create a share system where holders can increase their value by receiving a proportional share of the system's earnings. This is achieved through the BTTBurnVault, where holders can burn their tokens at any time to receive their share of the wBTC reserves, based on their holdings. The system's shares will be distributed through periodic direct transfers of wBTC to the BTTburnVault
+The primary objective of the EVA token and its ecosystem of smart contracts is to create a share system where holders can increase their value by receiving a proportional share of the system's earnings. This is achieved through the EVABurnVault, where holders can burn their tokens at any time to receive their share of the wBTC reserves, based on their holdings. The system's shares will be distributed through periodic direct transfers of wBTC to the BEVAburnVault
 
-As the system evolves and holders burn their tokens, the next earnings are distributed among fewer BTT tokens, thereby increasing the value of remaining tokens relative to the BTTBurnVault. This not only improves the value against the BurnVault but also enhances the overall distribution rate, rewarding holders who continue to hold and benefit from a higher share of the system's earnings.
+As the system evolves and holders burn their tokens, the next earnings are distributed among fewer EVA tokens, thereby increasing the value of remaining tokens relative to the EVABurnVault. This not only improves the value against the BurnVault but also enhances the overall distribution rate, rewarding holders who continue to hold and benefit from a higher share of the system's earnings.
 
 ## 1. Features
 
-- **Burnable ERC20 Token**: BTT tokens can be burned to withdraw a proportional amount of wBTC from the BTTBurnVault.
-- **Fixed Supply**: The total supply of BTT tokens is capped at 21,000,000, ensuring scarcity and value preservation.
-- **BTTBurnVault**: A smart contract that allows BTT holders to burn their tokens in exchange for wBTC, based on the current token reserve and total supply.
-- **BTTMarket**: A centralized marketplace to buy and sell BTT tokens at rates set by the administrator, providing liquidity and easy exchange options for token holders.
+- **Burnable ERC20 Token**: EVA tokens can be burned to withdraw a proportional amount of wBTC from the EVABurnVault.
+- **Fixed Supply**: The total supply of EVA tokens is capped at 21,000,000, ensuring scarcity and value preservation.
+- **EVABurnVault**: A smart contract that allows EVA holders to burn their tokens in exchange for wBTC, based on the current token reserve and total supply.
+- **EVAMarket**: A centralized marketplace to buy and sell EVA tokens at rates set by the administrator, providing liquidity and easy exchange options for token holders.
 
 ## Contract Architecture
 
 To read the entire API definition refer to [API DOCUMENTATION](API.md)
 
-### BetterCoin Contract
+### EverValueCoin Contract
 
 **Overview**:  
-BetterCoin (BTT) is a burnable ERC20 token with a limited supply, designed to work on the Arbitrum network. This contract manages the minting and burning of BTT tokens, with a capped total supply of 21,000,000 tokens.
+EverValueCoin (EVA) is a burnable ERC20 token with a limited supply, designed to work on the Arbitrum network. This contract manages the minting and burning of EVA tokens, with a capped total supply of 21,000,000 tokens.
 
-### 1.1 BTTBurnVault Contract
+### 1.1 EVABurnVault Contract
 
-This contract allows users to burn their BTT in exchange for wBTC stored in the vault. The exchange rate adjusts dynamically based on the BTT total supply and the current wBTC reserves, ensuring that all token holders receive the same value per token burned at a defined moment.
+This contract allows users to burn their EVA in exchange for wBTC stored in the vault. The exchange rate adjusts dynamically based on the EVA total supply and the current wBTC reserves, ensuring that all token holders receive the same value per token burned at a defined moment.
 
-### 1.2 BTTMarket Contract
+### 1.2 EVAMarket Contract
 
-Operates as a centralized exchange for BTT, where users can buy or sell BTT tokens against a market token at administratively set rates. This contract includes transaction fees and provides functionalities for rate and fee adjustments by the contract owner.
+Operates as a centralized exchange for EVA, where users can buy or sell EVA tokens against a market token at administratively set rates. This contract includes transaction fees and provides functionalities for rate and fee adjustments by the contract owner.
 
 ## 2. Functional Requirements
 
 ### 2.1 Roles
 
-- **Admin**: Manages contract settings, such as setting rates and fees in BTTMarket, and can perform administrative tasks like withdrawing tokens from the contracts.
-- **User**: Interacts with the contracts by buying, selling, burning BTT tokens, and withdrawing wBTC from the BTTBurnVault.
+- **Admin**: Manages contract settings, such as setting rates and fees in EVAMarket, and can perform administrative tasks like withdrawing tokens from the contracts.
+- **User**: Interacts with the contracts by buying, selling, burning EVA tokens, and withdrawing wBTC from the EVABurnVault.
 
 ### 2.2 Features
 
-- **Token Minting and Burning**: BTT tokens are minted upon contract deployment and can be burned by users to withdraw wBTC.
-- **Proportional Withdrawals**: Users can burn BTT tokens to withdraw a proportional amount of wBTC based on the total supply and wBTC balance.
-- **Centralized Marketplace**: Users can buy and sell BTT tokens at administratively set rates.
-- **Adjustable Rates and Fees**: Admin can adjust the exchange rates and transaction fees in the BTTMarket contract.
+- **Token Minting and Burning**: EVA tokens are minted upon contract deployment and can be burned by users to withdraw wBTC.
+- **Proportional Withdrawals**: Users can burn EVA tokens to withdraw a proportional amount of wBTC based on the total supply and wBTC balance.
+- **Centralized Marketplace**: Users can buy and sell EVA tokens at administratively set rates.
+- **Adjustable Rates and Fees**: Admin can adjust the exchange rates and transaction fees in the EVAMarket contract.
 
 ### 2.3 Use Cases
 
-1. **Burning BTT for wBTC**:
-   - **User**: Burns BTT tokens to withdraw a proportional amount of wBTC from the BTTBurnVault.
-   - **Contract Interaction**: Calls `backingWithdraw` function in BTTBurnVault.
-2. **Buying BTT**:
+1. **Burning EVA for wBTC**:
+   - **User**: Burns EVA tokens to withdraw a proportional amount of wBTC from the EVABurnVault.
+   - **Contract Interaction**: Calls `backingWithdraw` function in EVABurnVault.
+2. **Buying EVA**:
 
-   - **User**: Buys BTT tokens using market tokens.
-   - **Contract Interaction**: Calls `buy` function in BTTMarket.
+   - **User**: Buys EVA tokens using market tokens.
+   - **Contract Interaction**: Calls `buy` function in EVAMarket.
 
-3. **Selling BTT**:
+3. **Selling EVA**:
 
-   - **User**: Sells BTT tokens to receive market tokens.
-   - **Contract Interaction**: Calls `sell` function in BTTMarket.
+   - **User**: Sells EVA tokens to receive market tokens.
+   - **Contract Interaction**: Calls `sell` function in EVAMarket.
 
 4. **Admin Adjusts Rates and Fees**:
-   - **Admin**: Adjusts the price of BTT tokens and the transaction fees.
-   - **Contract Interaction**: Calls `setRate` and `setFee` functions in BTTMarket.
+   - **Admin**: Adjusts the price of EVA tokens and the transaction fees.
+   - **Contract Interaction**: Calls `setRate` and `setFee` functions in EVAMarket.
 
 ## 3. Technical Requirements
 
 ### 3.1 Contract Information
 
-#### 3.1.1 BetterCoin.sol
+#### 3.1.1 EverValueCoin.sol
 
 - **Assets**:
-  - `MAX_SUPPLY`: The maximum supply of BTT tokens.
+  - `MAX_SUPPLY`: The maximum supply of EVA tokens.
 - **Events**:
   - `Transfer`: Emitted when tokens are transferred.
   - `Approval`: Emitted when an approval is made for token allowance.
@@ -81,31 +81,31 @@ Operates as a centralized exchange for BTT, where users can buy or sell BTT toke
   - `burn(uint256 amount)`: Burns a specified amount of tokens from the caller's balance.
   - `burnFrom(address account, uint256 amount)`: Burns a specified amount of tokens from a specific account using the caller's allowance.
 
-#### 3.1.2 BTTBurnVault.sol
+#### 3.1.2 EVABurnVault.sol
 
 - **Assets**:
   - `wbtc`: The wBTC token contract.
-  - `btt`: The BTT token contract.
+  - `eva`: The EVA token contract.
 - **Events**:
-  - `burnMade(uint256 bttBurned, uint256 wbtcWithdrew)`: Emitted when BTT tokens are burned and wBTC is withdrawn.
+  - `burnMade(uint256 EVABurned, uint256 wbtcWithdrew)`: Emitted when EVA tokens are burned and wBTC is withdrawn.
 - **Functions**:
-  - `constructor(address _addrBtt, address _addrWbtc)`: Sets the BTT and wBTC contract addresses.
-  - `backingWithdraw(uint256 amount)`: Burns BTT tokens and withdraws a proportional amount of wBTC.
+  - `constructor(address _addrEVA, address _addrWbtc)`: Sets the EVA and wBTC contract addresses.
+  - `backingWithdraw(uint256 amount)`: Burns EVA tokens and withdraws a proportional amount of wBTC.
 
-#### 3.1.3 BTTMarket.sol
+#### 3.1.3 EVAMarket.sol
 
 - **Assets**:
-  - `btt`: The BTT token contract.
+  - `eva`: The EVA token contract.
   - `marketToken`: The market token contract.
 - **Events**:
-  - `userBought(uint256 marketTokenFromUser, uint256 bttToUser)`: Emitted when a user buys BTT.
-  - `userSold(uint256 marketTokenToUser, uint256 bttFromUser)`: Emitted when a user sells BTT.
+  - `userBought(uint256 marketTokenFromUser, uint256 EVAToUser)`: Emitted when a user buys EVA.
+  - `userSold(uint256 marketTokenToUser, uint256 EvaFromUser)`: Emitted when a user sells EVA.
 - **Functions**:
-  - `constructor(address _addrBtt, address _addrMarketToken, uint256 _marketTokenPer100Btt, uint256 _fee)`: Sets the contract addresses, initial rate, and fee.
-  - `buy(uint256 amount)`: Allows a user to buy BTT tokens with market tokens.
-  - `sell(uint256 amount)`: Allows a user to sell BTT tokens for market tokens.
-  - `setRate(uint256 _marketTokenPer100Btt)`: Sets the price of 100 BTT tokens in market tokens.
-  - `setFee(uint256 _fee)`: Sets the transaction fee for selling BTT tokens.
+  - `constructor(address _addrEva, address _addrMarketToken, uint256 _marketTokenPer100EVA, uint256 _fee)`: Sets the contract addresses, initial rate, and fee.
+  - `buy(uint256 amount)`: Allows a user to buy EVA tokens with market tokens.
+  - `sell(uint256 amount)`: Allows a user to sell EVA tokens for market tokens.
+  - `setRate(uint256 _marketTokenPer100EVA)`: Sets the price of 100 EVA tokens in market tokens.
+  - `setFee(uint256 _fee)`: Sets the transaction fee for selling EVA tokens.
   - `withdrawAll()`: Withdraws all tokens from the contract.
 
 #### 3.2 Architecture Overview
@@ -157,7 +157,7 @@ This script:
 This script:
 
 - Deploys test versions of the USDT and wBTC tokens to be used in testing.
-- Deploys the BTT contracts using the Ignition modules with testing parameters.
+- Deploys the EVA contracts using the Ignition modules with testing parameters.
 
 ## Deployment Modules
 
@@ -179,4 +179,4 @@ This script:
 This script:
 
 - Deploys test versions of the USDT and wBTC tokens to be used in testing.
-- Deploys the BTT contracts using the Ignition modules with testing parameters.
+- Deploys the EVA contracts using the Ignition modules with testing parameters.

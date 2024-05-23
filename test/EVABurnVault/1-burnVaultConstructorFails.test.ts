@@ -1,13 +1,13 @@
 import { ethers } from "hardhat";
 import chai from "chai";
-import { BetterCoin, Token } from "../../typechain-types";
+import { EverValueCoin, Token } from "../../typechain-types";
 import hre from "hardhat";
 import erc20Module from "../../ignition/modules/token";
-import bttModule from "../../ignition/modules/BetterCoin";
+import evaModule from "../../ignition/modules/EverValueCoin";
 const { expect } = chai;
 
 describe("Burn vault constructor fail requires", function () {
-  let btt: BetterCoin;
+  let eva: EverValueCoin;
   let wbtc: Token;
   let usdt: Token;
   const zeroAddress = "0x0000000000000000000000000000000000000000";
@@ -24,7 +24,8 @@ describe("Burn vault constructor fail requires", function () {
         },
       })
     ).erc20 as unknown as Token;
-    btt = (await hre.ignition.deploy(bttModule)).btt as unknown as BetterCoin;
+    eva = (await hre.ignition.deploy(evaModule))
+      .eva as unknown as EverValueCoin;
 
     usdt = (
       await hre.ignition.deploy(erc20Module, {
@@ -39,19 +40,19 @@ describe("Burn vault constructor fail requires", function () {
     ).erc20 as unknown as Token;
   });
 
-  it("Contract deployment may fail setting BTT address as zero address", async function () {
+  it("Contract deployment may fail setting EVA address as zero address", async function () {
     const [owner] = await ethers.getSigners();
-    const burnVault = await ethers.getContractFactory("BTTBurnVault");
+    const burnVault = await ethers.getContractFactory("EVABurnVault");
     await expect(
       burnVault.deploy(zeroAddress, wbtc.getAddress())
-    ).to.revertedWith("Cannot set BTT to zero address");
+    ).to.revertedWith("Cannot set EVA to zero address");
   });
 
-  it("Contract deployment may fail setting BTT address as zero address", async function () {
+  it("Contract deployment may fail setting EVA address as zero address", async function () {
     const [owner] = await ethers.getSigners();
-    const burnVault = await ethers.getContractFactory("BTTBurnVault");
+    const burnVault = await ethers.getContractFactory("EVABurnVault");
     await expect(
-      burnVault.deploy(btt.getAddress(), zeroAddress)
+      burnVault.deploy(eva.getAddress(), zeroAddress)
     ).to.revertedWith("Cannot set wBTC to zero address");
   });
 });

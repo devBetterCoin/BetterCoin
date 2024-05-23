@@ -1,10 +1,10 @@
 import hre from "hardhat";
-import bttModule from "../ignition/modules/BetterCoin";
-import bttMarketModule from "../ignition/modules/BTTMarket";
-import bttBurnVaultModule from "../ignition/modules/BTTBurnVault";
+import evaModule from "../ignition/modules/EverValueCoin";
+import evaMarketModule from "../ignition/modules/EVAMarket";
+import evaBurnVaultModule from "../ignition/modules/EVABurnVault";
 import erc20Module from "../ignition/modules/token";
 async function main() {
-  const { btt } = await hre.ignition.deploy(bttModule);
+  const { eva } = await hre.ignition.deploy(evaModule);
   const [owner] = await hre.ethers.getSigners();
   const wbtc = (
     await hre.ignition.deploy(erc20Module, {
@@ -30,20 +30,20 @@ async function main() {
     })
   ).erc20;
 
-  const addrBtt = (await btt.getAddress()).toLocaleLowerCase();
+  const addrEva = (await eva.getAddress()).toLocaleLowerCase();
   const addrWbtc = (await wbtc.getAddress()).toLocaleLowerCase();
   const addrUsdt = (await usdt.getAddress()).toLocaleLowerCase();
 
-  const { bttBurnVault } = await hre.ignition.deploy(bttBurnVaultModule, {
+  const { evaBurnVault } = await hre.ignition.deploy(evaBurnVaultModule, {
     parameters: {
-      bttBurnVaultModule: { addrBtt: addrBtt, addrWbtc: addrWbtc },
+      bttBurnVaultModule: { addrEva: addrEva, addrWbtc: addrWbtc },
     },
   });
 
-  const { bttMarket } = await hre.ignition.deploy(bttMarketModule, {
+  const { evaMarket } = await hre.ignition.deploy(evaMarketModule, {
     parameters: {
       bttMarketModule: {
-        addrBtt: addrBtt,
+        addrEva: addrEva,
         addrMarketToken: addrUsdt,
         owner: owner.address,
       },
